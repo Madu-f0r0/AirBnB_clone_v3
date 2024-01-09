@@ -42,7 +42,7 @@ def get_cities():
     """this is the view for the /api/v1/cities
         endpoint"""
     res = [x.to_dict() for x in storage.all(City).values()]
-    print(f"res is {res}")
+    # print(f"res is {res}")
     return jsonify(res)
 
 
@@ -75,7 +75,7 @@ def post_cities_of_state(state_id):
         storage.save()
         return make_response(jsonify(new_city.to_dict()), 201)
     except Exception as e:
-        print(f"exception is : {e}")
+        # print(f"exception is : {e}")
         return make_response(jsonify("Not a JSON"), 400)
 
 
