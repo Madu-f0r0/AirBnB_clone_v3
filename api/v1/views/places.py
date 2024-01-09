@@ -14,16 +14,16 @@ from models.user import User
 from models import storage
 
 
-@app_views.route('/cities/<place_id>/places',
+@app_views.route('/cities/<city_id>/places',
                  strict_slashes=False, methods=["GET"])
-def get_places_of_city(place_id):
+def get_places_of_city(city_id):
     """this is the view for the /api/v1/cities/[SLUG]/places
         endpoint"""
-    res = storage.get(City, escape(place_id))
+    res = storage.get(City, escape(city_id))
     if not res:
         abort(404)
     res = storage.all(Place).values()
-    res = [x.to_dict() for x in res if x.place_id == place_id]
+    res = [x.to_dict() for x in res if x.city_id == city_id]
     return jsonify(res)
 
 
