@@ -1,5 +1,6 @@
 $(document).ready(function () {
   let checkedAmenities = {};
+
   $(document).on('change', "input[type='checkbox']", function () {
     if (this.checked) {
       checkedAmenities[$(this).data('id')] = $(this).data('name');
